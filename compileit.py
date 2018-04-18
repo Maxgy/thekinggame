@@ -15,14 +15,15 @@ if detect_os == "linux":
         os.chdir("../src")
         src_files = [f for f in os.listdir() if os.path.isfile(f)]
         os.chdir("../build")
+
         for f in src_files:
             if os.path.isfile("../src/" + f):
                 # create object files in build for argument source files
                 os.system("g++ -c -std=c++17 -g -O3 -Wall ../src/" + f);
             else:
                 print("File " + f + " does not exist.")
-    else:
-        for arg in sys.argv[1:]:
+    elif len(sys.argv) > 1:
+        for arg in sys.argv[2:]:
             if os.path.isfile("../" + arg):
                 # create object files in build for argument source files
                 os.system("g++ -c -std=c++17 -g -O3 -Wall ../" + arg);
