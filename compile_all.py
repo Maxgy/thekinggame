@@ -11,6 +11,8 @@ os.chdir("build")
 
 detect_os = sys.platform;
 if detect_os == "linux":
+    flags = "-std=c++17 -g -O3 -Wall"
+
     os.chdir("../src")
     src_files = [f for f in os.listdir() if os.path.isfile(f)]
     os.chdir("../build")
@@ -18,12 +20,12 @@ if detect_os == "linux":
     for f in src_files:
         if os.path.isfile("../src/" + f):
             # create object files in build for all source files
-            os.system("g++ -c -std=c++17 -g -O3 -Wall ../src/" + f);
+            os.system("g++ -c " + flags + " ../src/" + f);
         else:
             print("File " + f + " does not exist.")
  
     obj_files = [f for f in os.listdir() if os.path.isfile(f)]
-    compile_cmd = "g++ -std=c++17 -g -O3 -Wall -o ../exe "
+    compile_cmd = "g++ " + flags + " -o ../exe "
     for o in obj_files:
         compile_cmd += o + " "
     os.system(compile_cmd);

@@ -10,14 +10,19 @@ namespace Mba {
 class Cli {
  public: 
   Cli();
+  
   void start();
   inline void quit();
+ 
+ private:
+  bool running_;
+  std::vector<std::string> verbs;
+  std::vector<std::string> adj;
+  std::vector<std::string> nouns;
+  
   std::string prompt();
   std::vector<std::string> parts(const std::string);
   void parse(const std::vector<std::string>);
-  inline bool quit_words(const std::string);
- private:
-  bool running_;
 };
 }  // namespace Mba
 
