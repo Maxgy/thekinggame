@@ -1,19 +1,21 @@
 // Copyright 2018 Maxwell Anderson
 
-#include "../include/Mba/Cli.h"
+#include "../include/kinggame/Cli.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../include/Mba/Player.h"
 
-Mba::Cli::Cli() {
+#include "../include/kinggame/World.h"
+
+kinggame::Cli::Cli() {
   this->running_ = false;
   this->verbs = {};
   this->adj = {};
   this->nouns = {};
 }
 
-void Mba::Cli::start() {
+void kinggame::Cli::start() {
   std::cout << "CLI started.\n";
   this->running_ = true;
   while (this->running_) {
@@ -26,11 +28,11 @@ void Mba::Cli::start() {
   }
 }
 
-inline void Mba::Cli::quit() {
+inline void kinggame::Cli::quit() {
   this->running_ = false;
 }
 
-std::string Mba::Cli::prompt() {
+std::string kinggame::Cli::prompt() {
   while (true) {
     std::cout << "> ";
     std::string cmd;
@@ -41,7 +43,7 @@ std::string Mba::Cli::prompt() {
   }
 }
 
-std::vector<std::string> Mba::Cli::parts(std::string cmd) {
+std::vector<std::string> kinggame::Cli::parts(std::string cmd) {
   cmd += ' ';
   std::vector<std::string> part_vec;
   unsigned long cmd_size {cmd.size()}; 
@@ -60,7 +62,7 @@ std::vector<std::string> Mba::Cli::parts(std::string cmd) {
   return part_vec;
 }
 
-void Mba::Cli::parse(const std::vector<std::string> words) {
+void kinggame::Cli::parse(const std::vector<std::string> words) {
   if (words[0] == "quit") {
     this->quit();
   } else if (words[0] == "say") {

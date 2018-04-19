@@ -1,12 +1,14 @@
 // Copyright 2018 Maxwell Anderson
 
-#ifndef INCLUDE_MBA_CLI_H_
-#define INCLUDE_MBA_CLI_H_
+#ifndef INCLUDE_KINGGAME_CLI_H_
+#define INCLUDE_KINGGAME_CLI_H_
 
 #include <string>
 #include <vector>
 
-namespace Mba {
+#include "World.h"
+
+namespace kinggame {
 class Cli {
  public: 
   Cli();
@@ -16,6 +18,7 @@ class Cli {
  
  private:
   bool running_;
+  World world;
   std::vector<std::string> verbs;
   std::vector<std::string> adj;
   std::vector<std::string> nouns;
@@ -24,6 +27,6 @@ class Cli {
   std::vector<std::string> parts(const std::string);
   void parse(const std::vector<std::string>);
 };
-}  // namespace Mba
+}  // namespace kinggame
 
-#endif  // INCLUDE_MBA_CLI_H_
+#endif  // INCLUDE_KINGGAME_CLI_H_

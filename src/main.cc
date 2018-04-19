@@ -1,9 +1,9 @@
 // Copyright 2018 Maxwell Anderson
 
-#include "../include/Mba/Cli.h"
+#include "../include/kinggame/Cli.h"
 
 int main() {
-  Mba::Cli cli;
+  kinggame::Cli cli;
   cli.start();
   return 0;
 }
