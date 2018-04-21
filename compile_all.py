@@ -11,7 +11,7 @@ os.chdir("build")
 
 detect_os = sys.platform;
 if detect_os == "linux":
-    flags = "-std=c++17 -g -O3 -Wall"
+    flags = "-std=c++17 -g -O3 -Wall -Wextra"
 
     os.chdir("../src")
     src_files = [f for f in os.listdir() if os.path.isfile(f)]
