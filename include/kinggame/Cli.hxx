@@ -1,12 +1,15 @@
-// Copyright 2018 Maxwell Anderson
+// include/kinggame/Cli.hxx
+// 
+// Maxwell Anderson 2018
 
-#ifndef INCLUDE_KINGGAME_CLI_H_
-#define INCLUDE_KINGGAME_CLI_H_
+#ifndef INCLUDE_KINGGAME_CLI_HXX_
+#define INCLUDE_KINGGAME_CLI_HXX_
 
 #include <string>
 #include <vector>
 
-#include "World.h"
+#include "World.hxx"
+#include "Player.hxx"
 
 namespace kinggame {
 class Cli {
@@ -18,7 +21,8 @@ class Cli {
  
  private:
   bool running_;
-  World world;
+  World world_;
+  Player p1_;
   std::vector<std::string> verbs;
   std::vector<std::string> adj;
   std::vector<std::string> nouns;
@@ -29,4 +33,4 @@ class Cli {
 };
 }  // namespace kinggame
 
-#endif  // INCLUDE_KINGGAME_CLI_H_
+#endif  // INCLUDE_KINGGAME_CLI_HXX_

@@ -1,18 +1,29 @@
-// Copyright 2018 Maxwell Anderson
+// src/Cli.cxx
+// 
+// Maxwell Anderson 2018
 
-#include "../include/kinggame/Cli.h"
+#include "../include/kinggame/Cli.hxx"
 
 #include <iostream>
 #include <string>
 #include <vector>
 
-#include "../include/kinggame/World.h"
+#include "../include/kinggame/World.hxx"
+#include "../include/kinggame/Player.hxx"
+#include "../include/kinggame/Obj.hxx"
 
 kinggame::Cli::Cli() {
   this->running_ = false;
   this->verbs = {};
   this->adj = {};
   this->nouns = {};
+  
+  std::vector<kinggame::Room> rooms {};
+  this->world_ = {rooms};
+  this->p1_ = {};
+
+  this->world_.set_player(this->p1_);
+  this->p1_.set_world(this->world_);
 }
 
 void kinggame::Cli::start() {
@@ -21,9 +32,6 @@ void kinggame::Cli::start() {
   while (this->running_) {
     std::string cmd { this->prompt() };
     std::vector<std::string> cmd_parts { this->parts(cmd) };
-    for (auto s : cmd_parts) {
-      std::cout << "\"" << s << "\"" << ", ";
-    } std::cout << "\n";
     this->parse(cmd_parts);
   }
 }
@@ -66,9 +74,12 @@ void kinggame::Cli::parse(const std::vector<std::string> words) {
   if (words[0] == "quit") {
     this->quit();
   } else if (words[0] == "say") {
+    std::cout << "You say, \" ";
     for (auto iter {words.begin() + 1}; iter != words.end(); ++iter) {
-      std::cout << "." << *iter << ". ";
+      std::cout << *iter << " ";
     }
-    std::cout << "\n";
+    std::cout << "\"\n";
+  } else {
+    
   }
 }
