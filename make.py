@@ -1,4 +1,6 @@
-#!/usr/bin/env python
+# make.py
+# 
+# Maxwell Anderson 2018
 
 import os, sys
 

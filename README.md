@@ -4,9 +4,5 @@
 * GCC >= 7.3.1
 ### Building:
 ```
-$ ./compile_all.py
-```
-or
-```
-> python compile_all.py
+$ python compile_all.py
 ```
