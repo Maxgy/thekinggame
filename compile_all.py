@@ -25,7 +25,7 @@ if detect_os == "linux":
             print("File " + f + " does not exist.")
  
     obj_files = [f for f in os.listdir() if os.path.isfile(f)]
-    compile_cmd = "g++ " + flags + " -o ../exe "
+    compile_cmd = "g++ " + flags + " -o ../thekinggame.exe "
     for o in obj_files:
         compile_cmd += o + " "
     os.system(compile_cmd);
