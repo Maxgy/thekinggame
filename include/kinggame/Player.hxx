@@ -1,5 +1,5 @@
 // include/kinggame/Player.hxx
-// 
+//
 // Maxwell Anderson 2018
 
 #ifndef INCLUDE_KINGGAME_PLAYER_HXX_
@@ -16,11 +16,11 @@ class World;
 class Player {
  public:
   Player();
-  
+
   void set_world(World);
   inline int hp();
 
-  //void action(std::string, Obj);
+  void action(std::string, Obj);
  private:
   World *world_;
   int hp_;

@@ -12,12 +12,12 @@
 
 namespace kinggame {
 class Player;
-  
+
 class World {
  public:
   World();
   World(std::vector<Room>);
-  
+
   void set_player(Player);
  private:
   Player *p1_;

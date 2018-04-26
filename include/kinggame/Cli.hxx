@@ -1,5 +1,5 @@
 // include/kinggame/Cli.hxx
-// 
+//
 // Maxwell Anderson 2018
 
 #ifndef INCLUDE_KINGGAME_CLI_HXX_
@@ -13,12 +13,12 @@
 
 namespace kinggame {
 class Cli {
- public: 
+ public:
   Cli();
-  
+
   void start();
   inline void quit();
- 
+
  private:
   bool running_;
   World world_;
@@ -26,7 +26,7 @@ class Cli {
   std::vector<std::string> verbs;
   std::vector<std::string> adj;
   std::vector<std::string> nouns;
-  
+
   std::string prompt();
   std::vector<std::string> parts(const std::string);
   void parse(const std::vector<std::string>);

@@ -21,6 +21,6 @@ inline int kinggame::Player::hp() {
   return this->hp_;
 }
 
-//void kinggame::Player::action(std::string verb, kinggame::Obj obj) {
+void kinggame::Player::action(std::string verb, kinggame::Obj obj) {
   
-//}
+}

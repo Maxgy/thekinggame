@@ -1,7 +1,7 @@
 // include/kinggame/Obj.cxx
 //
 // Maxwell Anderson 2018
- 
+
 #ifndef INCLUDE_KINGGAME_OBJ_HXX_
 #define INCLUDE_KINGGAME_OBJ_HXX_
 
