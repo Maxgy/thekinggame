@@ -5,5 +5,5 @@
 * GCC >= 7.3.1
 ### Building:
 ```
-$ python compile_all.py
+$ python make.py
 ```
