@@ -2,8 +2,8 @@
 //
 // Maxwell Anderson 2018
 
-#ifndef INCLUDE_KINGGAME_WORLD_HXX_
-#define INCLUDE_KINGGAME_WORLD_HXX_
+#ifndef THEKINGGAME_INCLUDE_KINGGAME_WORLD_HXX_
+#define THEKINGGAME_INCLUDE_KINGGAME_WORLD_HXX_
 
 #include <vector>
 
@@ -14,15 +14,17 @@ namespace kinggame {
 class Player;
 
 class World {
- public:
+public:
   World();
   World(std::vector<Room>);
+  ~World();
 
   void set_player(Player);
- private:
+
+private:
   Player *p1_;
   std::vector<Room> rooms_;
 };
-}
+} // namespace kinggame
 
-#endif  // INCLUDE_KINGGAME_WORLD_HXX_
+#endif // THEKINGGAME_INCLUDE_KINGGAME_WORLD_HXX_

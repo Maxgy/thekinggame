@@ -2,24 +2,24 @@
 //
 // Maxwell Anderson 2018
 
-#ifndef INCLUDE_KINGGAME_CLI_HXX_
-#define INCLUDE_KINGGAME_CLI_HXX_
+#ifndef THEKINGGAME_INCLUDE_KINGGAME_CLI_HXX_
+#define THEKINGGAME_INCLUDE_KINGGAME_CLI_HXX_
 
 #include <string>
 #include <vector>
 
-#include "World.hxx"
 #include "Player.hxx"
+#include "World.hxx"
 
 namespace kinggame {
 class Cli {
- public:
+public:
   Cli();
 
   void start();
   inline void quit();
 
- private:
+private:
   bool running_;
   World world_;
   Player p1_;
@@ -31,6 +31,6 @@ class Cli {
   std::vector<std::string> parts(const std::string);
   void parse(const std::vector<std::string>);
 };
-}  // namespace kinggame
+} // namespace kinggame
 
-#endif  // INCLUDE_KINGGAME_CLI_HXX_
+#endif // THEKINGGAME_INCLUDE_KINGGAME_CLI_HXX_

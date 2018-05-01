@@ -2,16 +2,16 @@
 //
 // Maxwell Anderson 2018
 
-#ifndef INCLUDE_KINGGAME_OBJ_HXX_
-#define INCLUDE_KINGGAME_OBJ_HXX_
+#ifndef THEKINGGAME_INCLUDE_KINGGAME_OBJ_HXX_
+#define THEKINGGAME_INCLUDE_KINGGAME_OBJ_HXX_
 
 #include <string>
 
 namespace kinggame {
 class Obj {
- public:
+public:
   Obj(std::string);
 };
-}  // namespace kinggame
+} // namespace kinggame
 
-#endif  // INCLUDE_KINGGAME_OBJ_HXX_
+#endif // THEKINGGAME_INCLUDE_KINGGAME_OBJ_HXX_

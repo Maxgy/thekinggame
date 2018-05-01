@@ -4,7 +4,7 @@
 
 #include "../include/kinggame/Cli.hxx"
 
-int main() {
+int main(int argc, char *argv[]) {
   kinggame::Cli cli;
   cli.start();
   return 0;

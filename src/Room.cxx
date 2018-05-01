@@ -6,17 +6,8 @@
 
 #include <string>
 
-#include "../include/kinggame/Obj.hxx"
+#include "../include/kinggame/Path.hxx"
 
-kinggame::Room::Room(std::string desc) {
-  this->desc_ = desc;
-}
+kinggame::Room::Room(std::string desc) { this->desc_ = desc; }
 
-void kinggame::Room::connect_rooms(kinggame::Room* west_room = nullptr,
-                                   kinggame::Room* east_room = nullptr,
-                                   kinggame::Room* north_room = nullptr,
-                                   kinggame::Room* south_room = nullptr,
-                                   kinggame::Room* up_room = nullptr, 
-                                   kinggame::Room* down_room = nullptr) {
-  
-}
+kinggame::Room::~Room() {}

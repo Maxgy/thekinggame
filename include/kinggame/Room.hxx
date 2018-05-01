@@ -2,28 +2,24 @@
 //
 // Maxwell Anderson 2018
 
-#ifndef INCLUDE_KINGGAME_ROOM_HXX_
-#define INCLUDE_KINGGAME_ROOM_HXX_
+#ifndef THEKINGGAME_INCLUDE_KINGGAME_ROOM_HXX_
+#define THEKINGGAME_INCLUDE_KINGGAME_ROOM_HXX_
 
 #include <string>
+#include <unordered_map>
 
-#include "Obj.hxx"
+#include "Path.hxx"
 
 namespace kinggame {
 class Room {
- public:
+public:
   Room(std::string);
+  ~Room();
 
-  void connect_rooms(Room*, Room*, Room*, Room*, Room*, Room*);
- private:
+private:
   std::string desc_;
-  Room *west_room_;
-  Room *east_room_;
-  Room *north_room_;
-  Room *south_room_;
-  Room *up_room_;
-  Room *down_room_;
+  std::unordered_map<std::string, Path> paths;
 };
-}  // namespace kinggame
+} // namespace kinggame
 
-#endif  // INCLUDE_KINGGAME_ROOM_HXX_
+#endif // THEKINGGAME_INCLUDE_KINGGAME_ROOM_HXX_
