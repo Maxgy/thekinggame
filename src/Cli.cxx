@@ -4,19 +4,21 @@
 
 #include "../include/kinggame/Cli.hxx"
 
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
 
-#include "../include/kinggame/Obj.hxx"
+//#include "../include/kinggame/Obj.hxx"
 #include "../include/kinggame/Player.hxx"
+#include "../include/kinggame/Room.hxx"
 #include "../include/kinggame/World.hxx"
 
 kinggame::Cli::Cli() {
   this->running_ = false;
-  this->verbs = {};
-  this->adj = {};
-  this->nouns = {};
+  this->verbs_ = {};
+  this->adj_ = {};
+  this->nouns_ = {};
 
   std::vector<kinggame::Room> rooms{};
   this->world_ = {rooms};
@@ -25,6 +27,8 @@ kinggame::Cli::Cli() {
   this->world_.set_player(this->p1_);
   this->p1_.set_world(this->world_);
 }
+
+kinggame::Cli::~Cli() {}
 
 void kinggame::Cli::start() {
   std::cout << "CLI started.\n";
@@ -50,11 +54,13 @@ std::string kinggame::Cli::prompt() {
 }
 
 std::vector<std::string> kinggame::Cli::parts(std::string cmd) {
-  cmd += ' ';
+  cmd += " ";
   std::vector<std::string> part_vec;
+  part_vec.reserve(10);
   unsigned long cmd_size{cmd.size()};
 
   std::string add_str{""};
+  add_str.reserve(7);
   for (unsigned long indx{0}; indx < cmd_size; ++indx) {
     if (cmd[indx] == ' ') {
       if (!add_str.empty()) {
@@ -65,6 +71,7 @@ std::vector<std::string> kinggame::Cli::parts(std::string cmd) {
       add_str += cmd[indx];
     }
   }
+  part_vec.shrink_to_fit();
   return part_vec;
 }
 

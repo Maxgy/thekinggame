@@ -9,12 +9,14 @@
 #include <vector>
 
 #include "Player.hxx"
+#include "Room.hxx"
 #include "World.hxx"
 
 namespace kinggame {
 class Cli {
 public:
   Cli();
+  ~Cli();
 
   void start();
   inline void quit();
@@ -23,9 +25,9 @@ private:
   bool running_;
   World world_;
   Player p1_;
-  std::vector<std::string> verbs;
-  std::vector<std::string> adj;
-  std::vector<std::string> nouns;
+  std::vector<std::string> verbs_;
+  std::vector<std::string> adj_;
+  std::vector<std::string> nouns_;
 
   std::string prompt();
   std::vector<std::string> parts(const std::string);

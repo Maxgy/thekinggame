@@ -17,4 +17,6 @@ os.system("cmake ..")
 
 os.system("make")
 
+os.rename("compile_commands.json", "../compile_commands.json")
+
 os.chdir("..")
