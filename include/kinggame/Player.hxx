@@ -20,12 +20,16 @@ public:
 
   void set_world(World);
   inline int hp();
+  inline std::string name();
+  void set_name(std::string);
 
-  void action(std::string, Obj);
+  void action(std::string, std::string);
 
 private:
   World *world_;
+  std::string name_;
   int hp_;
+  unsigned long curr_room_;
 };
 } // namespace kinggame
 

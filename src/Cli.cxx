@@ -9,23 +9,23 @@
 #include <string>
 #include <vector>
 
-//#include "../include/kinggame/Obj.hxx"
 #include "../include/kinggame/Player.hxx"
 #include "../include/kinggame/Room.hxx"
 #include "../include/kinggame/World.hxx"
 
-kinggame::Cli::Cli() {
+kinggame::Cli::Cli() {}
+
+kinggame::Cli::Cli(std::vector<kinggame::Room> rooms) {
   this->running_ = false;
-  this->verbs_ = {};
+  this->verbs_ = {"l", "look", ""};
   this->adj_ = {};
   this->nouns_ = {};
 
-  std::vector<kinggame::Room> rooms{};
-  this->world_ = {rooms};
-  this->p1_ = {};
+  this->world = {rooms};
+  this->p1 = {};
 
-  this->world_.set_player(this->p1_);
-  this->p1_.set_world(this->world_);
+  this->world.set_player(this->p1);
+  this->p1.set_world(this->world);
 }
 
 kinggame::Cli::~Cli() {}
@@ -47,7 +47,9 @@ std::string kinggame::Cli::prompt() {
     std::cout << "> ";
     std::string cmd;
     std::getline(std::cin, cmd);
-    if (!cmd.empty()) {
+    if (std::cin.fail()) {
+      continue;
+    } else if (!cmd.empty()) {
       return cmd;
     }
   }

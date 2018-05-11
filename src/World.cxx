@@ -13,7 +13,7 @@ kinggame::World::World() {}
 
 kinggame::World::~World() {}
 
-kinggame::World::World(std::vector<Room> rooms) { this->rooms_ = rooms; }
+kinggame::World::World(std::vector<Room> rooms) : rooms_(rooms) {}
 
 void kinggame::World::set_player(kinggame::Player player) {
   this->p1_ = &player;

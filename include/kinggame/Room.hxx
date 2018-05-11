@@ -5,20 +5,25 @@
 #ifndef THEKINGGAME_INCLUDE_KINGGAME_ROOM_HXX_
 #define THEKINGGAME_INCLUDE_KINGGAME_ROOM_HXX_
 
+#include <map>
 #include <string>
-#include <unordered_map>
 
 #include "Path.hxx"
 
 namespace kinggame {
+class Path;
+
 class Room {
 public:
-  Room(std::string);
+  Room(std::string, std::string);
   ~Room();
 
+  void print();
+
 private:
+  std::string name_;
   std::string desc_;
-  std::unordered_map<std::string, Path> paths;
+  std::map<std::string, Path> paths;
 };
 } // namespace kinggame
 

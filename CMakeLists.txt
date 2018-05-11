@@ -4,27 +4,14 @@ project (thekinggame)
 
 set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GCC")
+if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GCC" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
   set (CMAKE_CXX_FLAGS "-std=c++17 -g -O3 -Wall -Wextra")
-  include_directories(
-    include
-    /usr/include
-    /usr/include/c++/${CMAKE_CXX_COMPILER_VERSION}
-  )
-elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
-  set (CMAKE_CXX_FLAGS "-std=c++17 -g -O3 -Wall -Wextra")
-  include_directories(
-    include
-    /usr/include
-    /usr/lib/clang/${CMAKE_CXX_COMPILER_VERSION}/include
-  )
-elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
-
-endif()
+endif ()
 
 set (SOURCES
   src/Cli.cxx
   src/main.cxx
+  src/Path.cxx
   src/Player.cxx
   src/Room.cxx
   src/World.cxx

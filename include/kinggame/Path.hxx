@@ -16,6 +16,7 @@ class Path {
 public:
   Path();
   Path(Room, std::string);
+  ~Path();
 
 private:
   std::string desc_;

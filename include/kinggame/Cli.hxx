@@ -16,15 +16,17 @@ namespace kinggame {
 class Cli {
 public:
   Cli();
+  Cli(std::vector<Room>);
   ~Cli();
 
   void start();
   inline void quit();
 
+  World world;
+  Player p1;
+
 private:
   bool running_;
-  World world_;
-  Player p1_;
   std::vector<std::string> verbs_;
   std::vector<std::string> adj_;
   std::vector<std::string> nouns_;
