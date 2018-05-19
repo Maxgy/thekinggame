@@ -9,7 +9,21 @@
 #include "../include/kinggame/Cli.hxx"
 #include "../include/kinggame/Room.hxx"
 
+std::string PromptName();
+
 int main(int argc, char *argv[]) {
+  std::string name{PromptName()};
+
+  std::vector<kinggame::Room> rooms{
+      kinggame::Room{"Start Room", "You stand in at the beginning."},
+      kinggame::Room{"Next Room", "You stand in the next room."}};
+  kinggame::Cli cli{rooms};
+  cli.p1_.set_name(name);
+  cli.start();
+  return 0;
+}
+
+std::string PromptName() {
   std::string name;
   while (true) {
     std::cout << "Enter name: ";
@@ -22,9 +36,5 @@ int main(int argc, char *argv[]) {
       break;
     }
   }
-  std::vector<kinggame::Room> rooms{kinggame::Room{"", ""}};
-  kinggame::Cli cli{rooms};
-  cli.p1.set_name("");
-  cli.start();
-  return 0;
+  return name;
 }

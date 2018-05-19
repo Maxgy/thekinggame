@@ -4,8 +4,10 @@ project (thekinggame)
 
 set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+set (CMAKE_CXX_STANDARD 17)
+
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GCC" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
-  set (CMAKE_CXX_FLAGS "-std=c++17 -g -O3 -Wall -Wextra")
+  set (CMAKE_CXX_FLAGS "-g -O3 -Wall -Wextra")
 endif ()
 
 set (SOURCES

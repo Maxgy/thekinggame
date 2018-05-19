@@ -21,6 +21,8 @@ public:
 
   void set_player(Player);
 
+  Room *get_room(std::vector<Room>::size_type);
+
 private:
   Player *p1_;
   std::vector<Room> rooms_;

@@ -22,18 +22,21 @@ public:
   void start();
   inline void quit();
 
-  World world;
-  Player p1;
+  World world_;
+  Player p1_;
 
 private:
   bool running_;
+  std::vector<std::string> cmds_;
   std::vector<std::string> verbs_;
+  std::vector<std::string> preps_;
   std::vector<std::string> adj_;
   std::vector<std::string> nouns_;
 
   std::string prompt();
-  std::vector<std::string> parts(const std::string);
-  void parse(const std::vector<std::string>);
+  std::vector<std::string> parts(std::string);
+  std::vector<std::string> filter(std::vector<std::string>);
+  void parse(std::vector<std::string>);
 };
 } // namespace kinggame
 

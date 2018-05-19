@@ -14,7 +14,6 @@ kinggame::Room::Room(std::string name, std::string desc)
 
 kinggame::Room::~Room() {}
 
-void kinggame::Room::print() {
-  std::cout << this->name_ << "\n\n";
-  std::cout << this->desc_ << "\n";
+std::string kinggame::Room::info() {
+  return this->name_ + "\n\n" + this->desc_ + "\n";
 }

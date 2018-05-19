@@ -18,7 +18,7 @@ public:
   Room(std::string, std::string);
   ~Room();
 
-  void print();
+  std::string info();
 
 private:
   std::string name_;

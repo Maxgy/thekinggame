@@ -19,8 +19,8 @@ public:
   ~Path();
 
 private:
-  std::string desc_;
   Room *target_;
+  std::string desc_;
 };
 } // namespace kinggame
 

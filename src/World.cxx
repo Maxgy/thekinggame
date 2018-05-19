@@ -18,3 +18,7 @@ kinggame::World::World(std::vector<Room> rooms) : rooms_(rooms) {}
 void kinggame::World::set_player(kinggame::Player player) {
   this->p1_ = &player;
 }
+
+kinggame::Room *kinggame::World::get_room(std::vector<Room>::size_type indx) {
+  return &this->rooms_[indx];
+}

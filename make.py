@@ -3,9 +3,6 @@
 # make.py
 #
 # Maxwell Anderson 2018
-'''
-clang --version | grep -o -e "[0-9]*\.[0-9]*\.*[0-9]"
-'''
 
 import os
 import platform
