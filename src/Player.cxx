@@ -5,6 +5,7 @@
 #include "../include/kinggame/Player.hxx"
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -18,6 +19,11 @@ kinggame::Player::~Player() {}
 void kinggame::Player::set_world(kinggame::World world) {
   this->world_ = &world;
   this->curr_room_ = this->world_->get_room(0);
+  // std::cout << this->world_ << " world_\n";
+  // std::cout << this->world_->get_room(0) << " room 0\n";
+  // std::cout << this->world_->get_room(0)->info() << "\n";
+  // std::cout << "==============================================\n";
+  // this->look();
 }
 
 inline int kinggame::Player::hp() { return this->hp_; }
@@ -42,10 +48,10 @@ void kinggame::Player::action(std::string verb, std::string obj) {
   }
 }
 
-void kinggame::Player::look() {
-  // this->curr_room_->print();
-  std::cout << this->curr_room_->info();
-}
+void kinggame::Player::action(std::string verb, std::string obj,
+                              std::string prep, std::string obj2) {}
+
+void kinggame::Player::look() { std::cout << this->curr_room_->info(); }
 
 void kinggame::Player::take(std::string obj) {
   // this->inventory_.push_back(obj);

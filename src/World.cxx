@@ -19,6 +19,8 @@ void kinggame::World::set_player(kinggame::Player player) {
   this->p1_ = &player;
 }
 
-kinggame::Room *kinggame::World::get_room(std::vector<Room>::size_type indx) {
-  return &this->rooms_[indx];
+std::shared_ptr<kinggame::Room>
+kinggame::World::get_room(std::vector<Room>::size_type indx) {
+  // return &this->rooms_[indx];
+  return std::make_shared<kinggame::Room>(this->rooms_[indx]);
 }

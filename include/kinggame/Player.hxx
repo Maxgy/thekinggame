@@ -5,6 +5,7 @@
 #ifndef THEKINGGAME_INCLUDE_KINGGAME_PLAYER_HXX_
 #define THEKINGGAME_INCLUDE_KINGGAME_PLAYER_HXX_
 
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -27,6 +28,7 @@ public:
 
   void action(std::string);
   void action(std::string, std::string);
+  void action(std::string, std::string, std::string, std::string);
 
   void look();
   void take(std::string);
@@ -35,7 +37,7 @@ private:
   World *world_;
   std::string name_;
   int hp_;
-  Room *curr_room_;
+  std::shared_ptr<Room> curr_room_;
   std::vector<Obj> inventory_;
 };
 } // namespace kinggame

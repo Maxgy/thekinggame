@@ -21,11 +21,12 @@ public:
 
   void set_player(Player);
 
-  Room *get_room(std::vector<Room>::size_type);
+  std::shared_ptr<kinggame::Room> get_room(std::vector<Room>::size_type);
+
+  std::vector<Room> rooms_;
 
 private:
   Player *p1_;
-  std::vector<Room> rooms_;
 };
 } // namespace kinggame
 

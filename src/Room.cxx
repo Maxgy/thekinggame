@@ -9,6 +9,8 @@
 
 #include "../include/kinggame/Path.hxx"
 
+kinggame::Room::Room() {}
+
 kinggame::Room::Room(std::string name, std::string desc)
     : name_(name), desc_(desc) {}
 
