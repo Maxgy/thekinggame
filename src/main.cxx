@@ -13,10 +13,10 @@ std::string PromptName();
 
 int main(int argc, char *argv[]) {
   std::string name{PromptName()};
-
-  std::vector<kinggame::Room> rooms{
-      kinggame::Room{"Start Room", "You stand in at the beginning."},
-      kinggame::Room{"Next Room", "You stand in the next room."}};
+  kinggame::Room start_room{"Start Room", "You stand in at the beginning."};
+  kinggame::Room next_room{"Next Room", "You stand in the next room."};
+  start_room.add_path("n", next_room, "There is a path to the north.");
+  std::vector<kinggame::Room> rooms{start_room, next_room};
   kinggame::Cli cli{rooms};
   cli.p1_.set_name(name);
   cli.start();

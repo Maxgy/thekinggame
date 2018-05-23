@@ -21,10 +21,14 @@ public:
 
   std::string info();
 
+  std::shared_ptr<std::map<std::string, Path>> paths();
+  void add_path(std::string, Room, std::string);
+  Path get_path(std::string);
+
 private:
   std::string name_;
   std::string desc_;
-  std::map<std::string, Path> paths;
+  std::map<std::string, Path> paths_;
 };
 } // namespace kinggame
 

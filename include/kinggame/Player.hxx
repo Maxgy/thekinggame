@@ -31,6 +31,7 @@ public:
   void action(std::string, std::string, std::string, std::string);
 
   void look();
+  void move(std::string);
   void take(std::string);
 
 private:

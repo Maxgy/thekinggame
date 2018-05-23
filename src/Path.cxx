@@ -15,3 +15,7 @@ kinggame::Path::Path(kinggame::Room target, std::string desc) : desc_(desc) {
 }
 
 kinggame::Path::~Path() {}
+
+kinggame::Room *kinggame::Path::target() { return this->target_; }
+
+std::string kinggame::Path::desc() { return this->desc_; }

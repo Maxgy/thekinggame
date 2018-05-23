@@ -19,9 +19,11 @@ public:
   Path(Room, std::string);
   ~Path();
 
+  Room *target();
+  std::string desc();
+
 private:
   Room *target_;
-  // std::unique_ptr<Room> target_;
   std::string desc_;
 };
 } // namespace kinggame
