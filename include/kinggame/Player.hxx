@@ -19,9 +19,8 @@ class World;
 class Player {
 public:
   Player();
-  ~Player();
 
-  void set_world(World);
+  void set_world(World &);
   inline int hp();
   inline std::string name();
   void set_name(std::string);
@@ -36,9 +35,9 @@ public:
 
 private:
   World *world_;
+  Room *curr_room_;
   std::string name_;
   int hp_;
-  std::shared_ptr<Room> curr_room_;
   std::vector<Obj> inventory_;
 };
 } // namespace kinggame

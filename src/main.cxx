@@ -3,7 +3,9 @@
 // Maxwell Anderson 2018
 
 #include <iostream>
+#include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "../include/kinggame/Cli.hxx"
@@ -12,12 +14,25 @@
 std::string PromptName();
 
 int main(int argc, char *argv[]) {
-  std::string name{PromptName()};
+  std::string name;
+  if (argc >= 2) {
+    name = argv[1];
+  } else {
+    name = PromptName();
+  }
+
   kinggame::Room start_room{"Start Room", "You stand in at the beginning."};
   kinggame::Room next_room{"Next Room", "You stand in the next room."};
-  start_room.add_path("n", next_room, "There is a path to the north.");
-  std::vector<kinggame::Room> rooms{start_room, next_room};
-  kinggame::Cli cli{rooms};
+
+  start_room.add_path("n", &next_room, "There is a path to the north.");
+  next_room.add_path("s", &start_room, "There is a path to the south.");
+
+  std::vector<kinggame::Room> rooms;
+  rooms.reserve(2);
+  rooms.push_back(start_room);
+  rooms.push_back(next_room);
+
+  kinggame::Cli cli{std::move(rooms)};
   cli.p1_.set_name(name);
   cli.start();
   return 0;

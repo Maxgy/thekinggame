@@ -16,14 +16,13 @@ class Room;
 class Path {
 public:
   Path();
-  Path(Room, std::string);
-  ~Path();
+  Path(Room *, std::string);
 
-  Room *target();
+  Room *link();
   std::string desc();
 
 private:
-  Room *target_;
+  Room *link_;
   std::string desc_;
 };
 } // namespace kinggame

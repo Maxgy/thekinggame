@@ -17,7 +17,6 @@ class Cli {
 public:
   Cli();
   Cli(std::vector<Room>);
-  ~Cli();
 
   void start();
   inline void quit();

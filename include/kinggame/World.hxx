@@ -17,16 +17,14 @@ class World {
 public:
   World();
   World(std::vector<Room>);
-  ~World();
 
-  void set_player(Player);
+  void set_player(Player &);
 
-  std::shared_ptr<kinggame::Room> get_room(std::vector<Room>::size_type);
-
-  std::vector<Room> rooms_;
+  Room *get_room(unsigned long);
 
 private:
   Player *p1_;
+  std::vector<Room> rooms_;
 };
 } // namespace kinggame
 

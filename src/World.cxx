@@ -11,15 +11,12 @@
 
 kinggame::World::World() {}
 
-kinggame::World::~World() {}
+kinggame::World::World(std::vector<Room> rooms) : rooms_(std::move(rooms)) {}
 
-kinggame::World::World(std::vector<Room> rooms) : rooms_(rooms) {}
-
-void kinggame::World::set_player(kinggame::Player player) {
+void kinggame::World::set_player(kinggame::Player &player) {
   this->p1_ = &player;
 }
 
-std::shared_ptr<kinggame::Room>
-kinggame::World::get_room(std::vector<Room>::size_type indx) {
-  return std::make_shared<kinggame::Room>(this->rooms_[indx]);
+kinggame::Room *kinggame::World::get_room(unsigned long indx) {
+  return &this->rooms_[indx];
 }

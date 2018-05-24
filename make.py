@@ -12,8 +12,6 @@ if detect_os == "Linux":
     if os.path.isfile("/usr/bin/clang") and os.path.isfile("/usr/bin/clang++"):
         os.environ["CC"] = "/usr/bin/clang"
         os.environ["CXX"] = "/usr/bin/clang++"
-elif detect_os == "Windows":
-    pass
 
 try:
     os.makedirs("build")

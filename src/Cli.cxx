@@ -16,7 +16,7 @@
 kinggame::Cli::Cli() {}
 
 kinggame::Cli::Cli(std::vector<kinggame::Room> rooms)
-    : world_{rooms}, p1_{},
+    : world_{std::move(rooms)}, p1_{},
       running_(false), cmds_{"quit", "l", "i",  "n",  "s",  "e", "w",
                              "u",    "d", "ne", "nw", "se", "sw"},
       verbs_{"look"}, preps_{"at", "in", "on", "with", "under"}, adj_{},
@@ -24,8 +24,6 @@ kinggame::Cli::Cli(std::vector<kinggame::Room> rooms)
   this->world_.set_player(this->p1_);
   this->p1_.set_world(this->world_);
 }
-
-kinggame::Cli::~Cli() {}
 
 void kinggame::Cli::start() {
   std::cout << "CLI started.\n";

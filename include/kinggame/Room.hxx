@@ -6,6 +6,7 @@
 #define THEKINGGAME_INCLUDE_KINGGAME_ROOM_HXX_
 
 #include <map>
+#include <memory>
 #include <string>
 
 #include "Path.hxx"
@@ -17,17 +18,17 @@ class Room {
 public:
   Room();
   Room(std::string, std::string);
-  ~Room();
 
   std::string info();
 
-  std::shared_ptr<std::map<std::string, Path>> paths();
-  void add_path(std::string, Room, std::string);
-  Path get_path(std::string);
+  void add_path(std::string, Room *, std::string);
+  Path *get_path(std::string);
+  bool has_path(std::string);
 
 private:
   std::string name_;
   std::string desc_;
+  std::string info_;
   std::map<std::string, Path> paths_;
 };
 } // namespace kinggame
