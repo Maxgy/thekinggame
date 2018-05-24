@@ -5,7 +5,6 @@
 #ifndef THEKINGGAME_INCLUDE_KINGGAME_PATH_HXX_
 #define THEKINGGAME_INCLUDE_KINGGAME_PATH_HXX_
 
-#include <memory>
 #include <string>
 
 #include "Room.hxx"

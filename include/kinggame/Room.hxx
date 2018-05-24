@@ -6,7 +6,6 @@
 #define THEKINGGAME_INCLUDE_KINGGAME_ROOM_HXX_
 
 #include <map>
-#include <memory>
 #include <string>
 
 #include "Path.hxx"

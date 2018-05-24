@@ -5,7 +5,6 @@
 #ifndef THEKINGGAME_INCLUDE_KINGGAME_PLAYER_HXX_
 #define THEKINGGAME_INCLUDE_KINGGAME_PLAYER_HXX_
 
-#include <memory>
 #include <string>
 #include <vector>
 

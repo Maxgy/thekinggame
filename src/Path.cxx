@@ -4,7 +4,6 @@
 
 #include "../include/kinggame/Path.hxx"
 
-#include <memory>
 #include <string>
 
 #include "../include/kinggame/Room.hxx"

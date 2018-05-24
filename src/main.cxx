@@ -3,7 +3,6 @@
 // Maxwell Anderson 2018
 
 #include <iostream>
-#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
@@ -21,11 +20,15 @@ int main(int argc, char *argv[]) {
     name = PromptName();
   }
 
-  kinggame::Room start_room{"Start Room", "You stand in at the beginning."};
+  kinggame::Room start_room{"Start Room", "You stand at the beginning."};
   kinggame::Room next_room{"Next Room", "You stand in the next room."};
+  kinggame::Room south_hall{"South Hallway",
+                            "You are in a hall running north to south."};
 
   start_room.add_path("n", &next_room, "There is a path to the north.");
   next_room.add_path("s", &start_room, "There is a path to the south.");
+  start_room.add_path("s", &south_hall, "There is a hallway to the south.");
+  south_hall.add_path("n", &start_room, "");
 
   std::vector<kinggame::Room> rooms;
   rooms.reserve(2);
