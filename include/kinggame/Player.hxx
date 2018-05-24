@@ -37,6 +37,7 @@ private:
   Room *curr_room_;
   std::string name_;
   int hp_;
+  int gold_;
   std::vector<Obj> inventory_;
 };
 } // namespace kinggame

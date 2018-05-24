@@ -5,6 +5,7 @@
 #ifndef THEKINGGAME_INCLUDE_KINGGAME_WORLD_HXX_
 #define THEKINGGAME_INCLUDE_KINGGAME_WORLD_HXX_
 
+#include <memory>
 #include <vector>
 
 #include "Player.hxx"
@@ -16,7 +17,7 @@ class Player;
 class World {
 public:
   World();
-  World(std::vector<Room>);
+  World(std::vector<std::unique_ptr<Room>>);
 
   void set_player(Player &);
 
@@ -24,7 +25,7 @@ public:
 
 private:
   Player *p1_;
-  std::vector<Room> rooms_;
+  std::vector<std::unique_ptr<Room>> rooms_;
 };
 } // namespace kinggame
 

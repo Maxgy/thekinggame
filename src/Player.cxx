@@ -30,20 +30,25 @@ void kinggame::Player::action(std::string cmd) {
   } else if (this->curr_room_->has_path(cmd)) {
     this->move(cmd);
   } else {
-    std::cout << "Action not recognized.\n";
+    std::cout << "You can't do that.\n";
   }
 }
 
-/*void kinggame::Player::action(std::string verb, std::string obj) {
-  if (true) {
-
+void kinggame::Player::action(std::string verb, std::string obj) {
+  if (verb == "enter" && this->curr_room_->has_path(obj)) {
+    this->move(obj);
   } else {
-    std::cout << "Action not recognized.\n";
+    std::cout << "You can't do that.\n";
   }
-}*/
+}
 
-/*void kinggame::Player::action(std::string verb, std::string obj,
-                              std::string prep, std::string obj2) {}*/
+// void kinggame::Player::action(std::string verb, std::string obj,
+//                               std::string prep, std::string obj2) {
+//   if (0) {
+//   } else {
+//     std::cout << "You can't do that.\n";
+//   }
+// }
 
 void kinggame::Player::look() { std::cout << this->curr_room_->info(); }
 

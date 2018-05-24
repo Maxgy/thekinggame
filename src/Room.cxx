@@ -11,6 +11,8 @@
 
 kinggame::Room::Room() {}
 
+kinggame::Room::~Room() { std::cout << this->name_ << " destroyed.\n"; }
+
 kinggame::Room::Room(std::string name, std::string desc)
     : name_(name), desc_(desc), info_(name + "\n\n" + desc + "\n") {}
 
@@ -19,7 +21,9 @@ std::string kinggame::Room::info() { return this->info_; }
 void kinggame::Room::add_path(std::string direction, Room *target,
                               std::string desc) {
   this->paths_.insert({direction, kinggame::Path(target, desc)});
-  this->info_ += desc + "\n";
+  if (target != nullptr) {
+    this->info_ += desc + "\n";
+  }
 }
 
 kinggame::Path *kinggame::Room::get_path(std::string direction) {

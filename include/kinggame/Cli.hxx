@@ -16,7 +16,7 @@ namespace kinggame {
 class Cli {
 public:
   Cli();
-  Cli(std::vector<Room>);
+  Cli(std::vector<std::unique_ptr<Room>>);
 
   void start();
   inline void quit();
@@ -29,7 +29,7 @@ private:
   std::vector<std::string> cmds_;
   std::vector<std::string> verbs_;
   std::vector<std::string> preps_;
-  std::vector<std::string> adj_;
+  std::vector<std::string> adjs_;
   std::vector<std::string> nouns_;
 
   std::string prompt();

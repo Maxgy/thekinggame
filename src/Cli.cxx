@@ -6,7 +6,9 @@
 
 #include <algorithm>
 #include <iostream>
+#include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "../include/kinggame/Player.hxx"
@@ -15,18 +17,20 @@
 
 kinggame::Cli::Cli() {}
 
-kinggame::Cli::Cli(std::vector<kinggame::Room> rooms)
+kinggame::Cli::Cli(std::vector<std::unique_ptr<kinggame::Room>> rooms)
     : world_{std::move(rooms)}, p1_{},
       running_(false), cmds_{"quit", "l", "i",  "n",  "s",  "e", "w",
                              "u",    "d", "ne", "nw", "se", "sw"},
-      verbs_{"look"}, preps_{"at", "in", "on", "with", "under"}, adj_{},
-      nouns_{} {
+      verbs_{"enter"}, preps_{"at", "in", "on", "with", "under"},
+      adjs_{"big", "red"}, nouns_{"hatch"} {
   this->world_.set_player(this->p1_);
   this->p1_.set_world(this->world_);
 }
 
 void kinggame::Cli::start() {
-  std::cout << "CLI started.\n";
+  std::cout << "CLI started.\n"
+            << "~~~~~~~~~~~~~~~~\n";
+  this->p1_.look();
   this->running_ = true;
   while (this->running_) {
     std::string cmd{this->prompt()};
@@ -82,7 +86,7 @@ kinggame::Cli::filter(std::vector<std::string> part_vec) {
        iter != part_vec.end(); ++iter) {
     if (std::find(cmds_.begin(), cmds_.end(), *iter) != cmds_.end() ||
         std::find(verbs_.begin(), verbs_.end(), *iter) != verbs_.end() ||
-        std::find(adj_.begin(), adj_.end(), *iter) != adj_.end() ||
+        std::find(adjs_.begin(), adjs_.end(), *iter) != adjs_.end() ||
         std::find(nouns_.begin(), nouns_.end(), *iter) != nouns_.end()) {
       filtered_vec.push_back(*iter);
     }
@@ -98,6 +102,21 @@ void kinggame::Cli::parse(std::vector<std::string> words) {
     } else if (std::find(this->cmds_.begin(), this->cmds_.end(), words[0]) !=
                this->cmds_.end()) {
       this->p1_.action(words[0]);
+    } else if (std::find(this->verbs_.begin(), this->verbs_.end(), words[0]) !=
+               this->verbs_.end()) {
+      std::string obj;
+      for (std::vector<std::string>::iterator iter = words.begin() + 1;
+           iter != words.end(); ++iter) {
+        if (std::find(this->adjs_.begin(), this->adjs_.end(), *iter) !=
+            this->adjs_.end()) {
+          obj += *iter + " ";
+        } else if (std::find(this->nouns_.begin(), this->nouns_.end(), *iter) !=
+                   this->nouns_.end()) {
+          obj += *iter;
+          break;
+        }
+      }
+      this->p1_.action(words[0], obj);
     } else {
       std::cout << "That doesn't make sense.\n";
     }

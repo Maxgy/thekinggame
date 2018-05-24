@@ -17,6 +17,7 @@ class Room {
 public:
   Room();
   Room(std::string, std::string);
+  ~Room();
 
   std::string info();
 

@@ -4,6 +4,8 @@
 
 #include "../include/kinggame/World.hxx"
 
+#include <memory>
+#include <utility>
 #include <vector>
 
 #include "../include/kinggame/Player.hxx"
@@ -11,12 +13,13 @@
 
 kinggame::World::World() {}
 
-kinggame::World::World(std::vector<Room> rooms) : rooms_(std::move(rooms)) {}
+kinggame::World::World(std::vector<std::unique_ptr<Room>> rooms)
+    : rooms_(std::move(rooms)) {}
 
 void kinggame::World::set_player(kinggame::Player &player) {
   this->p1_ = &player;
 }
 
 kinggame::Room *kinggame::World::get_room(unsigned long indx) {
-  return &this->rooms_[indx];
+  return this->rooms_[indx].get();
 }
