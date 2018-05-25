@@ -5,7 +5,7 @@
 -   Python >= 3.6.5
 -   CMake >= 3.11.2
 -   Clang >= 6.0.0 or GCC >= 8.1.0
-    ### Building:
 
+### Building:
 
     $ python make.py
