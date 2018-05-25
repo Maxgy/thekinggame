@@ -11,8 +11,10 @@ if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GCC" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL
 endif ()
 
 set (SOURCES
+  src/Objs/IronSword.cxx
   src/Cli.cxx
   src/main.cxx
+  src/Obj.cxx
   src/Path.cxx
   src/Player.cxx
   src/Room.cxx

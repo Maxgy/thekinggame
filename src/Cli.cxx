@@ -17,8 +17,9 @@
 
 kinggame::Cli::Cli() {}
 
-kinggame::Cli::Cli(std::vector<std::unique_ptr<kinggame::Room>> rooms)
-    : world_{std::move(rooms)}, p1_{},
+kinggame::Cli::Cli(std::string name,
+                   std::vector<std::unique_ptr<kinggame::Room>> rooms)
+    : world_{std::move(rooms)}, p1_(name),
       running_(false), cmds_{"quit", "l", "i",  "n",  "s",  "e", "w",
                              "u",    "d", "ne", "nw", "se", "sw"},
       verbs_{"enter"}, preps_{"at", "in", "on", "with", "under"},
@@ -28,6 +29,7 @@ kinggame::Cli::Cli(std::vector<std::unique_ptr<kinggame::Room>> rooms)
 }
 
 void kinggame::Cli::start() {
+  std::cout << "Greetings, " << this->p1_.name() << ".\n";
   std::cout << "CLI started.\n"
             << "~~~~~~~~~~~~~~~~\n";
   this->p1_.look();
@@ -40,7 +42,14 @@ void kinggame::Cli::start() {
   }
 }
 
-inline void kinggame::Cli::quit() { this->running_ = false; }
+inline void kinggame::Cli::quit() {
+  std::cout << "Would you like to quit? [y/n]";
+  std::string choice{this->prompt()};
+  if (choice[0] == 'y') {
+    std::cout << "Goodbye!\n";
+    this->running_ = false;
+  }
+}
 
 std::string kinggame::Cli::prompt() {
   while (true) {

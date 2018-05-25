@@ -9,6 +9,8 @@
 #include <vector>
 
 #include "../include/kinggame/Cli.hxx"
+#include "../include/kinggame/Obj.hxx"
+#include "../include/kinggame/Objs/IronSword.hxx"
 #include "../include/kinggame/Room.hxx"
 
 std::string PromptName();
@@ -37,12 +39,12 @@ int main(int argc, char *argv[]) {
   start_room->add_path("s", south_hall.get(),
                        "There is a hallway to the south.");
   start_room->add_path("big red hatch", capsule.get(),
-                       "There is a big red hatch in the corner.");
+                       "There is a big red hatch in the corner.  It is open.");
   //// Capsule
   capsule->add_path("hatch", start_room.get(),
                     "A hatch leads back into the start room.");
   //// South Hall
-  south_hall->add_path("n", start_room.get(), "");
+  south_hall->add_path("n", start_room.get());
   //// Next Room
   next_room->add_path("s", start_room.get(), "There is a path to the south.");
   next_room->add_path("w", west_area.get(),
@@ -59,8 +61,7 @@ int main(int argc, char *argv[]) {
   rooms.emplace_back(std::move(next_room));
   rooms.emplace_back(std::move(west_area));
 
-  kinggame::Cli cli{std::move(rooms)};
-  cli.p1_.set_name(name);
+  kinggame::Cli cli{name, std::move(rooms)};
   cli.start();
   return 0;
 }

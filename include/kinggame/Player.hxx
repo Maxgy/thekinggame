@@ -18,10 +18,11 @@ class World;
 class Player {
 public:
   Player();
+  explicit Player(std::string);
 
   void set_world(World &);
   inline int hp();
-  inline std::string name();
+  std::string name();
   void set_name(std::string);
 
   void action(std::string);

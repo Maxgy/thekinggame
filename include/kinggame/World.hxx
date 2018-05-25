@@ -17,7 +17,7 @@ class Player;
 class World {
 public:
   World();
-  World(std::vector<std::unique_ptr<Room>>);
+  explicit World(std::vector<std::unique_ptr<Room>>);
 
   void set_player(Player &);
 

@@ -1,4 +1,4 @@
-// include/kinggame/Obj.cxx
+// include/kinggame/Obj.hxx
 //
 // Maxwell Anderson 2018
 
@@ -10,7 +10,14 @@
 namespace kinggame {
 class Obj {
 public:
-  Obj(std::string);
+  Obj(std::string, std::string);
+
+  std::string name();
+  std::string desc();
+
+private:
+  std::string name_;
+  std::string desc_;
 };
 } // namespace kinggame
 

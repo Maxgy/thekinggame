@@ -13,6 +13,9 @@
 
 kinggame::Player::Player() : curr_room_(nullptr), hp_(100), inventory_{} {}
 
+kinggame::Player::Player(std::string name)
+    : curr_room_(nullptr), name_(name), hp_(100), inventory_{} {}
+
 void kinggame::Player::set_world(kinggame::World &world) {
   this->world_ = &world;
   this->curr_room_ = this->world_->get_room(0);
@@ -20,7 +23,7 @@ void kinggame::Player::set_world(kinggame::World &world) {
 
 inline int kinggame::Player::hp() { return this->hp_; }
 
-inline std::string kinggame::Player::name() { return this->name_; }
+std::string kinggame::Player::name() { return this->name_; }
 
 void kinggame::Player::set_name(std::string name) { this->name_ = name; }
 
@@ -50,7 +53,7 @@ void kinggame::Player::action(std::string verb, std::string obj) {
 //   }
 // }
 
-void kinggame::Player::look() { std::cout << this->curr_room_->info(); }
+void kinggame::Player::look() { this->curr_room_->print_info(); }
 
 void kinggame::Player::move(std::string direction) {
   this->curr_room_ = this->curr_room_->get_path(direction)->link();
