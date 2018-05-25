@@ -23,34 +23,40 @@ int main(int argc, char *argv[]) {
 
   std::unique_ptr<kinggame::Room> start_room = std::make_unique<kinggame::Room>(
       "Start Room", "You stand at the beginning.");
-  std::unique_ptr<kinggame::Room> next_room = std::make_unique<kinggame::Room>(
-      "Next Room", "You stand in the next room.");
-  std::unique_ptr<kinggame::Room> south_hall = std::make_unique<kinggame::Room>(
-      "South Hallway", "You are in a hall running north to south.");
-  std::unique_ptr<kinggame::Room> west_area = std::make_unique<kinggame::Room>(
-      "West Area", "Everything seems strange... You shouldn't be here.");
   std::unique_ptr<kinggame::Room> capsule = std::make_unique<kinggame::Room>(
       "Capsule", "You seem to be in some sort of capsule.");
+  std::unique_ptr<kinggame::Room> south_hall = std::make_unique<kinggame::Room>(
+      "South Hallway", "You are in a hall running north to south.");
+  std::unique_ptr<kinggame::Room> next_room = std::make_unique<kinggame::Room>(
+      "Next Room", "You stand in the next room.");
+  std::unique_ptr<kinggame::Room> west_area = std::make_unique<kinggame::Room>(
+      "West Area", "Everything seems strange... You shouldn't be here.");
 
+  //// Start Room
   start_room->add_path("n", next_room.get(), "There is a path to the north.");
-  next_room->add_path("s", start_room.get(), "There is a path to the south.");
   start_room->add_path("s", south_hall.get(),
                        "There is a hallway to the south.");
-  south_hall->add_path("n", start_room.get(), "");
-  west_area->add_path("e", next_room.get(),
-                      "There is a path back to the east.");
-  next_room->add_path("w", west_area.get(),
-                      "There is an ominous opening to the west.");
   start_room->add_path("big red hatch", capsule.get(),
                        "There is a big red hatch in the corner.");
+  //// Capsule
   capsule->add_path("hatch", start_room.get(),
                     "A hatch leads back into the start room.");
+  //// South Hall
+  south_hall->add_path("n", start_room.get(), "");
+  //// Next Room
+  next_room->add_path("s", start_room.get(), "There is a path to the south.");
+  next_room->add_path("w", west_area.get(),
+                      "There is an ominous opening to the west.");
+  //// West Area
+  west_area->add_path("e", next_room.get(),
+                      "There is a path back to the east.");
 
   std::vector<std::unique_ptr<kinggame::Room>> rooms;
   rooms.reserve(4);
   rooms.emplace_back(std::move(start_room));
-  rooms.emplace_back(std::move(next_room));
+  rooms.emplace_back(std::move(capsule));
   rooms.emplace_back(std::move(south_hall));
+  rooms.emplace_back(std::move(next_room));
   rooms.emplace_back(std::move(west_area));
 
   kinggame::Cli cli{std::move(rooms)};

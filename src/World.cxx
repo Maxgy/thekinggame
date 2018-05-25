@@ -20,6 +20,7 @@ void kinggame::World::set_player(kinggame::Player &player) {
   this->p1_ = &player;
 }
 
-kinggame::Room *kinggame::World::get_room(unsigned long indx) {
+kinggame::Room *
+kinggame::World::get_room(std::vector<std::unique_ptr<Room>>::size_type indx) {
   return this->rooms_[indx].get();
 }

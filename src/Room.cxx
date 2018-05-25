@@ -21,9 +21,7 @@ std::string kinggame::Room::info() { return this->info_; }
 void kinggame::Room::add_path(std::string direction, Room *target,
                               std::string desc) {
   this->paths_.insert({direction, kinggame::Path(target, desc)});
-  if (target != nullptr) {
-    this->info_ += desc + "\n";
-  }
+  this->info_ += desc + "\n";
 }
 
 kinggame::Path *kinggame::Room::get_path(std::string direction) {

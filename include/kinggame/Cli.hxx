@@ -5,6 +5,7 @@
 #ifndef THEKINGGAME_INCLUDE_KINGGAME_CLI_HXX_
 #define THEKINGGAME_INCLUDE_KINGGAME_CLI_HXX_
 
+#include <memory>
 #include <string>
 #include <vector>
 
