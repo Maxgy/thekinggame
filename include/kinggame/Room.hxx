@@ -24,14 +24,15 @@ public:
   Room(std::string, std::string, std::map<std::string, std::unique_ptr<Obj>>);
 
   void print_info();
+  void add_info(std::string, std::string);
+  void remove_info(std::string);
 
   void add_path(std::string, Room *, std::string = "");
   Path *get_path(std::string);
   bool has_path(std::string);
 
   std::map<std::string, std::unique_ptr<Obj>> *objs();
-  std::unique_ptr<Obj> give_obj(std::string);
-  void take_obj(std::unique_ptr<kinggame::Obj>);
+
   bool has_obj(std::string);
 
 private:

@@ -44,9 +44,8 @@ void kinggame::Player::action(std::string verb, std::string noun) {
     this->move(noun);
   } else if (verb == "take" && this->curr_room_->has_obj(noun)) {
     this->take(noun);
-  } else if (verb == "drop") {
-    // TODO
-    this->inventory_.erase(noun);
+  } else if (verb == "drop" && this->has_obj(noun)) {
+    this->drop(noun);
   } else {
     std::cout << "You can't do that.\n";
   }
@@ -75,8 +74,19 @@ void kinggame::Player::move(std::string direction) {
 }
 
 void kinggame::Player::take(std::string obj) {
+  this->curr_room_->remove_info(obj);
   this->inventory_.emplace(
-      std::make_pair(this->curr_room_->give_obj(obj)->name(),
-                     this->curr_room_->give_obj(obj)));
+      std::make_pair(obj, std::move(this->curr_room_->objs()->at(obj))));
   this->curr_room_->objs()->erase(obj);
+}
+
+void kinggame::Player::drop(std::string obj) {
+  this->curr_room_->add_info(obj, this->inventory_.at(obj)->desc());
+  this->curr_room_->objs()->emplace(
+      std::make_pair(obj, std::move(this->inventory_.at(obj))));
+  this->inventory_.erase(obj);
+}
+
+bool kinggame::Player::has_obj(std::string obj) {
+  return this->inventory_.find(obj) != this->inventory_.end();
 }

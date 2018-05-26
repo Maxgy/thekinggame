@@ -33,6 +33,9 @@ public:
   void print_inventory();
   void move(std::string);
   void take(std::string);
+  void drop(std::string);
+
+  bool has_obj(std::string);
 
 private:
   World *world_;
