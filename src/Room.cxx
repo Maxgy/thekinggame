@@ -14,7 +14,18 @@
 kinggame::Room::Room() {}
 
 kinggame::Room::Room(std::string name, std::string desc)
-    : name_(name), desc_(desc), info_{} {}
+    : name_(name), desc_(desc) {}
+
+kinggame::Room::Room(std::string name, std::string desc,
+                     std::map<std::string, std::unique_ptr<kinggame::Obj>> objs)
+    : name_(name), desc_(desc), objs_(std::move(objs)) {
+
+  for (auto iter = this->objs_.begin(); iter != this->objs_.end(); ++iter) {
+    // this->info_.insert({(*iter).second->name(), (*iter).second->desc()});
+    this->info_.insert({iter->second->name(), iter->second->desc() + "\n"});
+  }
+  // std::cout << this->objs_.at("iron sword")->name();
+}
 
 void kinggame::Room::print_info() {
   std::cout << name_ << "\n\n";
@@ -42,7 +53,15 @@ bool kinggame::Room::has_path(std::string direction) {
   return this->paths_.find(direction) != this->paths_.end();
 }
 
-void kinggame::Room::add_obj(std::unique_ptr<kinggame::Obj> obj) {
-  this->objs_.insert({obj->name(), std::move(obj)});
-  this->info_.insert({obj->name(), obj->desc() + "\n"});
+std::map<std::string, std::unique_ptr<kinggame::Obj>> *kinggame::Room::objs() {
+  return &this->objs_;
+}
+
+std::unique_ptr<kinggame::Obj> kinggame::Room::give_obj(std::string obj) {
+  this->info_.erase(obj);
+  return std::move(this->objs_.at(obj));
+}
+
+bool kinggame::Room::has_obj(std::string obj) {
+  return this->objs_.find(obj) != this->objs_.end();
 }

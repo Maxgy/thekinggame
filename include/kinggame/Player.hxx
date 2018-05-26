@@ -5,8 +5,8 @@
 #ifndef THEKINGGAME_INCLUDE_KINGGAME_PLAYER_HXX_
 #define THEKINGGAME_INCLUDE_KINGGAME_PLAYER_HXX_
 
+#include <map>
 #include <string>
-#include <vector>
 
 #include "Obj.hxx"
 #include "Room.hxx"
@@ -30,6 +30,7 @@ public:
   void action(std::string, std::string, std::string, std::string);
 
   void look();
+  void print_inventory();
   void move(std::string);
   void take(std::string);
 
@@ -39,7 +40,7 @@ private:
   std::string name_;
   int hp_;
   int gold_;
-  std::vector<Obj> inventory_;
+  std::map<std::string, std::unique_ptr<Obj>> inventory_;
 };
 } // namespace kinggame
 

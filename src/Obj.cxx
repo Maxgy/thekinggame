@@ -8,9 +8,7 @@
 #include <string>
 
 kinggame::Obj::Obj(std::string name, std::string desc)
-    : name_(name), desc_(desc) {
-  std::cout << "Obj made;\n";
-}
+    : name_(name), desc_(desc) {}
 
 std::string kinggame::Obj::name() { return this->name_; }
 

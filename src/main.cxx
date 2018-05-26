@@ -3,6 +3,7 @@
 // Maxwell Anderson 2018
 
 #include <iostream>
+#include <map>
 #include <memory>
 #include <string>
 #include <utility>
@@ -23,8 +24,20 @@ int main(int argc, char *argv[]) {
     name = PromptName();
   }
 
+  std::unique_ptr<kinggame::Obj> iron_sword_start_room =
+      std::make_unique<kinggame::IronSword>(
+          "iron sword", "There is an iron sword on the floor.");
+  std::unique_ptr<kinggame::Obj> obj_start_room =
+      std::make_unique<kinggame::Obj>("obj", "There is an obj on the floor.");
+
+  std::map<std::string, std::unique_ptr<kinggame::Obj>> start_room_objs;
+  start_room_objs.emplace(std::make_pair(iron_sword_start_room->name(),
+                                         std::move(iron_sword_start_room)));
+  start_room_objs.emplace(
+      std::make_pair(obj_start_room->name(), std::move(obj_start_room)));
+
   std::unique_ptr<kinggame::Room> start_room = std::make_unique<kinggame::Room>(
-      "Start Room", "You stand at the beginning.");
+      "Start Room", "You stand at the beginning.", std::move(start_room_objs));
   std::unique_ptr<kinggame::Room> capsule = std::make_unique<kinggame::Room>(
       "Capsule", "You seem to be in some sort of capsule.");
   std::unique_ptr<kinggame::Room> south_hall = std::make_unique<kinggame::Room>(
@@ -54,7 +67,7 @@ int main(int argc, char *argv[]) {
                       "There is a path back to the east.");
 
   std::vector<std::unique_ptr<kinggame::Room>> rooms;
-  rooms.reserve(4);
+  rooms.reserve(5);
   rooms.emplace_back(std::move(start_room));
   rooms.emplace_back(std::move(capsule));
   rooms.emplace_back(std::move(south_hall));

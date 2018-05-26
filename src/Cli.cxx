@@ -22,8 +22,9 @@ kinggame::Cli::Cli(std::string name,
     : world_{std::move(rooms)}, p1_(name),
       running_(false), cmds_{"quit", "l", "i",  "n",  "s",  "e", "w",
                              "u",    "d", "ne", "nw", "se", "sw"},
-      verbs_{"enter"}, preps_{"at", "in", "on", "with", "under"},
-      adjs_{"big", "red"}, nouns_{"hatch"} {
+      verbs_{"drop", "enter", "take"}, preps_{"at", "in", "on", "with",
+                                              "under"},
+      adjs_{"big", "iron", "red"}, nouns_{"hatch", "sword"} {
   this->world_.set_player(&this->p1_);
   this->p1_.set_world(&this->world_);
 }

@@ -9,6 +9,4 @@
 #include "../../include/kinggame/Objs/IronSword.hxx"
 
 kinggame::IronSword::IronSword(std::string name, std::string desc)
-    : kinggame::Obj(name, desc) {
-  std::cout << "IronSword made;\n";
-}
+    : kinggame::Obj(name, desc) {}

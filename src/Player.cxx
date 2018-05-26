@@ -30,6 +30,8 @@ void kinggame::Player::set_name(std::string name) { this->name_ = name; }
 void kinggame::Player::action(std::string cmd) {
   if (cmd == "l") {
     this->look();
+  } else if (cmd == "i") {
+    this->print_inventory();
   } else if (this->curr_room_->has_path(cmd)) {
     this->move(cmd);
   } else {
@@ -37,16 +39,21 @@ void kinggame::Player::action(std::string cmd) {
   }
 }
 
-void kinggame::Player::action(std::string verb, std::string obj) {
-  if (verb == "enter" && this->curr_room_->has_path(obj)) {
-    this->move(obj);
+void kinggame::Player::action(std::string verb, std::string noun) {
+  if (verb == "enter" && this->curr_room_->has_path(noun)) {
+    this->move(noun);
+  } else if (verb == "take" && this->curr_room_->has_obj(noun)) {
+    this->take(noun);
+  } else if (verb == "drop") {
+    // TODO
+    this->inventory_.erase(noun);
   } else {
     std::cout << "You can't do that.\n";
   }
 }
 
-// void kinggame::Player::action(std::string verb, std::string obj,
-//                               std::string prep, std::string obj2) {
+// void kinggame::Player::action(std::string verb, std::string noun,
+//                               std::string prep, std::string noun2) {
 //   if (0) {
 //   } else {
 //     std::cout << "You can't do that.\n";
@@ -55,9 +62,21 @@ void kinggame::Player::action(std::string verb, std::string obj) {
 
 void kinggame::Player::look() { this->curr_room_->print_info(); }
 
+void kinggame::Player::print_inventory() {
+  for (auto iter = this->inventory_.begin(); iter != this->inventory_.end();
+       ++iter) {
+    std::cout << iter->first << "\n";
+  }
+}
+
 void kinggame::Player::move(std::string direction) {
   this->curr_room_ = this->curr_room_->get_path(direction)->link();
   this->look();
 }
 
-// void kinggame::Player::take(std::string obj) {}
+void kinggame::Player::take(std::string obj) {
+  this->inventory_.emplace(
+      std::make_pair(this->curr_room_->give_obj(obj)->name(),
+                     this->curr_room_->give_obj(obj)));
+  this->curr_room_->objs()->erase(obj);
+}
