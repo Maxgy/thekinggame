@@ -20,7 +20,7 @@ public:
   Player();
   explicit Player(std::string);
 
-  void set_world(World &);
+  void set_world(World *);
   inline int hp();
   std::string name();
   void set_name(std::string);

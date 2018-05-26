@@ -19,7 +19,7 @@ public:
   World();
   explicit World(std::vector<std::unique_ptr<Room>>);
 
-  void set_player(Player &);
+  void set_player(Player *);
 
   Room *get_room(std::vector<std::unique_ptr<Room>>::size_type);
 

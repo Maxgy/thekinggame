@@ -24,8 +24,8 @@ kinggame::Cli::Cli(std::string name,
                              "u",    "d", "ne", "nw", "se", "sw"},
       verbs_{"enter"}, preps_{"at", "in", "on", "with", "under"},
       adjs_{"big", "red"}, nouns_{"hatch"} {
-  this->world_.set_player(this->p1_);
-  this->p1_.set_world(this->world_);
+  this->world_.set_player(&this->p1_);
+  this->p1_.set_world(&this->world_);
 }
 
 void kinggame::Cli::start() {

@@ -16,8 +16,8 @@ kinggame::World::World() {}
 kinggame::World::World(std::vector<std::unique_ptr<Room>> rooms)
     : rooms_(std::move(rooms)) {}
 
-void kinggame::World::set_player(kinggame::Player &player) {
-  this->p1_ = &player;
+void kinggame::World::set_player(kinggame::Player *player) {
+  this->p1_ = player;
 }
 
 kinggame::Room *

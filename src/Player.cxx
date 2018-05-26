@@ -16,8 +16,8 @@ kinggame::Player::Player() : curr_room_(nullptr), hp_(100), inventory_{} {}
 kinggame::Player::Player(std::string name)
     : curr_room_(nullptr), name_(name), hp_(100), inventory_{} {}
 
-void kinggame::Player::set_world(kinggame::World &world) {
-  this->world_ = &world;
+void kinggame::Player::set_world(kinggame::World *world) {
+  this->world_ = world;
   this->curr_room_ = this->world_->get_room(0);
 }
 
