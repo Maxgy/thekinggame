@@ -24,7 +24,8 @@ kinggame::Cli::Cli(std::string name,
                              "u",    "d", "ne", "nw", "se", "sw"},
       verbs_{"drop", "enter", "take"}, preps_{"at", "in", "on", "with",
                                               "under"},
-      adjs_{"big", "iron", "red"}, nouns_{"hatch", "sword"} {
+      adjs_{"big", "curious", "iron", "red"}, nouns_{"block", "hatch", "object",
+                                                     "sword"} {
   this->world_.set_player(&this->p1_);
   this->p1_.set_world(&this->world_);
 }
@@ -44,7 +45,7 @@ void kinggame::Cli::start() {
 }
 
 inline void kinggame::Cli::quit() {
-  std::cout << "Would you like to quit? [y/n]";
+  std::cout << "Would you like to quit? (Y is yes)";
   std::string choice{this->prompt()};
   if (choice[0] == 'y') {
     std::cout << "Goodbye!\n";

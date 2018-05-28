@@ -10,8 +10,10 @@
 #include <vector>
 
 #include "../include/kinggame/Cli.hxx"
+#include "../include/kinggame/Enemy.hxx"
 #include "../include/kinggame/Obj.hxx"
-#include "../include/kinggame/Objs/IronSword.hxx"
+#include "../include/kinggame/Objects/Item.hxx"
+#include "../include/kinggame/Objects/Weapon.hxx"
 #include "../include/kinggame/Room.hxx"
 
 std::string PromptName();
@@ -28,13 +30,25 @@ int main(int argc, char *argv[]) {
 
   /// Start Room
   std::unique_ptr<kinggame::Obj> iron_sword_start_room{
-      std::make_unique<kinggame::IronSword>(
+      std::make_unique<kinggame::Weapon>(
           "iron sword", "There is an iron sword on the floor.")};
+  std::unique_ptr<kinggame::Obj> curious_object_start_room{
+      std::make_unique<kinggame::Item>(
+          "curious object", "There is a curious object on the floor.")};
 
-  /// Start Room
   std::map<std::string, std::unique_ptr<kinggame::Obj>> start_room_objs;
   start_room_objs.emplace(std::make_pair(iron_sword_start_room->name(),
                                          std::move(iron_sword_start_room)));
+  start_room_objs.emplace(std::make_pair(curious_object_start_room->name(),
+                                         std::move(curious_object_start_room)));
+  /// Next Room
+  std::unique_ptr<kinggame::Obj> iron_block_next_room{
+      std::make_unique<kinggame::Item>("iron block",
+                                       "There is an iron block on the floor.")};
+
+  std::map<std::string, std::unique_ptr<kinggame::Obj>> next_room_objs;
+  next_room_objs.emplace(std::make_pair(iron_block_next_room->name(),
+                                        std::move(iron_block_next_room)));
 
   //// ROOMS ////
 
@@ -49,7 +63,7 @@ int main(int argc, char *argv[]) {
       "South Hallway", "You are in a hall running north to south.");
   /// Next Room
   std::unique_ptr<kinggame::Room> next_room = std::make_unique<kinggame::Room>(
-      "Next Room", "You stand in the next room.");
+      "Next Room", "You stand in the next room.", std::move(next_room_objs));
   /// West Area
   std::unique_ptr<kinggame::Room> west_area = std::make_unique<kinggame::Room>(
       "West Area", "Everything seems strange... You shouldn't be here.");

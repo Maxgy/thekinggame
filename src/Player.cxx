@@ -62,9 +62,14 @@ void kinggame::Player::action(std::string verb, std::string noun) {
 void kinggame::Player::look() { this->curr_room_->print_info(); }
 
 void kinggame::Player::print_inventory() {
-  for (auto iter = this->inventory_.begin(); iter != this->inventory_.end();
-       ++iter) {
-    std::cout << iter->first << "\n";
+  if (this->inventory_.empty()) {
+    std::cout << "You have nothing.\n";
+  } else {
+    std::cout << "You have:\n";
+    for (auto iter = this->inventory_.begin(); iter != this->inventory_.end();
+         ++iter) {
+      std::cout << "  " << iter->first << "\n";
+    }
   }
 }
 
@@ -78,6 +83,7 @@ void kinggame::Player::take(std::string obj) {
   this->inventory_.emplace(
       std::make_pair(obj, std::move(this->curr_room_->objs()->at(obj))));
   this->curr_room_->objs()->erase(obj);
+  std::cout << "Taken.\n";
 }
 
 void kinggame::Player::drop(std::string obj) {
@@ -85,6 +91,7 @@ void kinggame::Player::drop(std::string obj) {
   this->curr_room_->objs()->emplace(
       std::make_pair(obj, std::move(this->inventory_.at(obj))));
   this->inventory_.erase(obj);
+  std::cout << "Dropped.\n";
 }
 
 bool kinggame::Player::has_obj(std::string obj) {

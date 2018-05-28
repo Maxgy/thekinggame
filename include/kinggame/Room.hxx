@@ -32,7 +32,6 @@ public:
   bool has_path(std::string);
 
   std::map<std::string, std::unique_ptr<Obj>> *objs();
-
   bool has_obj(std::string);
 
 private:

@@ -11,11 +11,12 @@ namespace kinggame {
 class Obj {
 public:
   Obj(std::string, std::string);
+  virtual ~Obj();
 
   std::string name();
   std::string desc();
 
-private:
+protected:
   std::string name_;
   std::string desc_;
 };

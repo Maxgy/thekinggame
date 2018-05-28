@@ -1,4 +1,4 @@
-// src/Objs/IronSword.cxx
+// src/Objects/Item.cxx
 //
 // Maxwell Anderson 2018
 
@@ -6,7 +6,7 @@
 #include <string>
 
 #include "../../include/kinggame/Obj.hxx"
-#include "../../include/kinggame/Objs/IronSword.hxx"
+#include "../../include/kinggame/Objects/Item.hxx"
 
-kinggame::IronSword::IronSword(std::string name, std::string desc)
+kinggame::Item::Item(std::string name, std::string desc)
     : kinggame::Obj(name, desc) {}

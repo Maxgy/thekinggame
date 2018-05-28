@@ -10,6 +10,8 @@
 kinggame::Obj::Obj(std::string name, std::string desc)
     : name_(name), desc_(desc) {}
 
+kinggame::Obj::~Obj() {}
+
 std::string kinggame::Obj::name() { return this->name_; }
 
 std::string kinggame::Obj::desc() { return this->desc_; }
