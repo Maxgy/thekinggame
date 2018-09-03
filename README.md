@@ -1,4 +1,5 @@
 # thekinggame
+deprecated in favor of https://github.com/Maxgy/kinggame1d
 
 ### Dependencies:
 
