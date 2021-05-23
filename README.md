@@ -1,5 +1,5 @@
 # thekinggame
-deprecated in favor of https://github.com/Maxgy/kingslayer
+deprecated in favor of https://github.com/Zaechus/kingslayer
 
 ### Dependencies:
 
